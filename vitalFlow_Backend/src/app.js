@@ -9,11 +9,7 @@ require('dotenv').config();
 const app = express();
 
 // Middlewares
-app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(cors()); // Enable CORS for all origins
 app.use(express.json());
 
 // Health Check
