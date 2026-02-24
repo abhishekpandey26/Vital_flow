@@ -3,6 +3,7 @@ const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
 const specs = require('./config/swagger');
 const authRoutes = require('./modules/auth/auth.routes');
+const doctorRoutes = require('./modules/doctors/doctor.routes');
 require('dotenv').config();
 
 const app = express();
@@ -25,6 +26,7 @@ app.get('/api/health', (req, res) => {
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/doctors', doctorRoutes);
 
 // Swagger Documentation
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
@@ -39,8 +41,8 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${PORT}`);
     console.log(`API Documentation available at http://localhost:${PORT}/api/docs`);
 });
 

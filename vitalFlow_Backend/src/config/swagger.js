@@ -24,7 +24,10 @@ const options = {
             },
         },
     },
-    apis: ['./src/modules/auth/auth.routes.js'], // Files containing annotations
+    apis: [
+        './src/modules/auth/auth.routes.js',
+        './src/modules/doctors/doctor.routes.js',
+    ], // Files containing Swagger JSDoc annotations
 };
 
 const specs = swaggerJsdoc(options);
